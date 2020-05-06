@@ -9,10 +9,9 @@ function loadImages() {
   const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
   fetch(imgUrl)
     .then(res=> res.json())
-    .then(r => r.message.forEach(addImage))
-    // .then(results => {
-    //   results.message.forEach(image => addImage(image))
-    // });
+    .then(results => {
+      results.message.forEach(image => addImage(image))
+    });
 }
 
 function addImage(dogPicUrl) {
@@ -26,14 +25,12 @@ function loadBreedOptions() {
   const breedUrl = 'https://dog.ceo/api/breeds/list/all'
   fetch(breedUrl)
     .then(res => res.json())
-    .then(r => r.message.forEach(updateBreedList))
-         (r => r.message.forEach(addImage))
-    // .then(results => {
+    .then(results => {
 
-    //   breeds = Object.keys(results.message);
-    //   updateBreedList(breeds);
-    //   addBreedSelectListener();
-    // });
+      breeds = Object.keys(results.message);
+      updateBreedList(breeds);
+      addBreedSelectListener();
+    });
 }
 
 function updateBreedList(breeds) {
